@@ -1,0 +1,187 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPadmakoshSiteData } from '../lib/sanity';
+
+const { artistProfile } = await loadPadmakoshSiteData();
+---
+
+<BaseLayout
+  title="Sonal Pendse | Kathak Artist, Director & Educator — Pune"
+  description="Profile of Kathak artist Sonal Pendse, senior disciple of Guru Shambhavi Dandekar and artistic director of Padmakosh School of Kathak in Bavdhan, Pune."
+  canonicalPath="/sonal-pendse/"
+>
+  <!-- Artist Hero (Clean, Zero Gradient Overlay) -->
+  <section class="section" style="padding-bottom: 3rem; background: var(--bg-primary);">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 4rem;">
+        <div>
+          <span class="kicker kicker--dark">THE ARTIST &amp; GURU</span>
+          <h1 style="font-size: var(--text-hero); margin-bottom: 0.5rem; line-height: 1.05;">
+            {artistProfile.name.value}
+          </h1>
+          <p style="font-family: var(--font-display); font-size: 1.5rem; color: var(--maroon-rich); margin-bottom: 2rem;">
+            Senior Disciple of Guru Shambhavi Dandekar
+          </p>
+          <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--text-primary); font-family: var(--font-display); margin-bottom: 1.5rem;">
+            {artistProfile.biographyIntro.value}
+          </p>
+          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 2.5rem;">
+            {artistProfile.artisticApproach.value}
+          </p>
+          <div class="btn-group">
+            <a href="/contact/" class="btn btn--maroon">
+              ENQUIRE FOR MASTERCLASSES OR PERFORMANCES
+            </a>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+          <!-- Clean Stage Portrait Card without any floating gradient overlay -->
+          <div style="width: 100%; max-width: 440px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-primary); box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.12);">
+            <div style="aspect-ratio: 3 / 4; overflow: hidden; background: #0c0809;">
+              <img
+                src="/images/gallery/KAU_0072.jpg"
+                alt="Sonal Pendse performing Kathak in teal and gold costume with hasta mudra"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center 10%; display: block;"
+              />
+            </div>
+            <div style="padding: 1.25rem 1.5rem; background: var(--bg-primary); border-top: 1px solid var(--border-light);">
+              <span style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--gold-dark); font-weight: 700; display: block; margin-bottom: 0.25rem;">
+                STAGE ARTISTRY
+              </span>
+              <p style="font-family: var(--font-display); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 0.15rem; line-height: 1.2;">
+                Sonal Pendse
+              </p>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0;">
+                Bavdhan, Pune · Senior Disciple of Guru Shambhavi Dandekar
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Spotlight on Expression and Mudra -->
+  <section class="section" style="padding-block: 2rem 4rem;">
+    <div class="container">
+      <div style="margin-bottom: 2rem;">
+        <span class="kicker kicker--dark">EXPRESSION &amp; MUDRA ARCHIVE</span>
+        <h2 style="font-size: var(--text-2xl); margin-bottom: 0;">Abhinaya, Hasta &amp; Footwork</h2>
+      </div>
+
+      <div class="grid-3" style="gap: 2rem;">
+        <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-primary); box-shadow: 0 10px 25px -10px rgba(0,0,0,0.08);">
+          <div style="aspect-ratio: 3 / 4; overflow: hidden; background: #0c0809;">
+            <img
+              src="/images/gallery/KAU_0235.jpg"
+              alt="Kathak abhinaya expression and mudra"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block;"
+            />
+          </div>
+          <div style="padding: 1.15rem 1.35rem; background: var(--bg-primary); border-top: 1px solid var(--border-light);">
+            <span style="font-size: 0.68rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; display: block; margin-bottom: 0.2rem;">ABHINAYA</span>
+            <p style="font-family: var(--font-display); font-size: 1.2rem; color: var(--text-primary); margin: 0;">Eyes &amp; Emotional Nuance</p>
+          </div>
+        </div>
+
+        <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-primary); box-shadow: 0 10px 25px -10px rgba(0,0,0,0.08);">
+          <div style="aspect-ratio: 3 / 4; overflow: hidden; background: #0c0809;">
+            <img
+              src="/images/gallery/KAU_6108.jpg"
+              alt="Kathak chakkar pirouette and graceful posture"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block;"
+            />
+          </div>
+          <div style="padding: 1.15rem 1.35rem; background: var(--bg-primary); border-top: 1px solid var(--border-light);">
+            <span style="font-size: 0.68rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; display: block; margin-bottom: 0.2rem;">CHAKKAR</span>
+            <p style="font-family: var(--font-display); font-size: 1.2rem; color: var(--text-primary); margin: 0;">Pirouette in Equilibrium</p>
+          </div>
+        </div>
+
+        <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border-light); background: var(--bg-primary); box-shadow: 0 10px 25px -10px rgba(0,0,0,0.08);">
+          <div style="aspect-ratio: 3 / 4; overflow: hidden; background: #0c0809;">
+            <img
+              src="/images/gallery/KAU_0159.jpg"
+              alt="Kathak mudra gesture and tatkar footwork"
+              style="width: 100%; height: 100%; object-fit: cover; object-position: center 12%; display: block;"
+            />
+          </div>
+          <div style="padding: 1.15rem 1.35rem; background: var(--bg-primary); border-top: 1px solid var(--border-light);">
+            <span style="font-size: 0.68rem; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; display: block; margin-bottom: 0.2rem;">HASTA MUDRA</span>
+            <p style="font-family: var(--font-display); font-size: 1.2rem; color: var(--text-primary); margin: 0;">Gestural Vocabulary</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Repertoire & Productions -->
+  <section class="section section--subtle">
+    <div class="container">
+      <div style="margin-bottom: 3.5rem;">
+        <span class="kicker kicker--dark">PORTFOLIO</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 0.5rem;">
+          Repertoire &amp; Thematic Productions
+        </h2>
+        <p style="max-width: 54ch; margin-bottom: 0;">
+          From classical solo baithaks to experimental dance theater presentations.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="sleek-card">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon-rich); display: block; margin-bottom: 1rem;">
+              FESTIVALS &amp; PRESENTATIONS
+            </span>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; font-size: 0.95rem;">
+              <li>
+                <strong>Purana Kila Festival</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Prestigious historic heritage stage presentation</span>
+              </li>
+              <li>
+                <strong>Vaikom Dance Festival</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Classical festival showcase</span>
+              </li>
+              <li>
+                <strong>Taal Yaatra &amp; Kathakotsav</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Rhythmic explorations and celebrations</span>
+              </li>
+              <li>
+                <strong>Sawantwadi Festival</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Regional cultural festival performance</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sleek-card">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 1rem;">
+              ORIGINAL THEMATIC PRODUCTIONS
+            </span>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; font-size: 0.95rem;">
+              <li>
+                <strong>Kathak Kirtan</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Interweaving traditional kirtan devotion with classical Kathak abhinaya</span>
+              </li>
+              <li>
+                <strong>Vyakta</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">An expressive choreographic journey exploring internal emotional states</span>
+              </li>
+              <li>
+                <strong>Abhidha</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Sanskrit poetic text translated into rhythmic dance vocabulary</span>
+              </li>
+              <li>
+                <strong>Sankraman</strong>
+                <span style="display: block; font-size: 0.8rem; color: var(--text-light);">Transitions and continuity in Indian classical dance parampara</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

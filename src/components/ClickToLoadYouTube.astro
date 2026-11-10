@@ -1,0 +1,206 @@
+---
+import type { YouTubeVideoAsset } from '../types/content';
+
+interface Props {
+  video: YouTubeVideoAsset;
+}
+
+const { video } = Astro.props;
+const localThumb = `/images/youtube/${video.youtubeId}.jpg`;
+const maxresRemote = `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+const hqRemote = `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
+---
+
+<article class="sleek-video-card" data-youtube-card>
+  <div
+    class="yt-click-to-load"
+    data-youtube-id={video.youtubeId}
+    data-youtube-title={video.title}
+  >
+    <!-- Authentic HD Video Thumbnail -->
+    <img
+      src={localThumb}
+      alt={video.title}
+      class="yt-thumb-img"
+      loading="eager"
+      decoding="async"
+      onerror={`if (this.src !== '${maxresRemote}') { this.src = '${maxresRemote}'; } else { this.src = '${hqRemote}'; }`}
+    />
+
+    <!-- Theatrical Controls Overlay -->
+    <div class="video-overlay">
+      <div class="video-overlay-top">
+        <span class="video-tag">HD RECORDING</span>
+        <span class="video-duration">{video.duration}</span>
+      </div>
+
+      <button
+        type="button"
+        class="play-circle-btn yt-load-trigger"
+        aria-label={`Play video: ${video.title}`}
+      >
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 13L2 24.2583L2 1.74167L20 13Z" fill="#0d0809" />
+        </svg>
+      </button>
+
+      <div class="video-overlay-bottom">
+        <span class="video-cue">CLICK TO PLAY ON SITE</span>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .sleek-video-card {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #000000;
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .yt-click-to-load {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    background: #0a0608;
+  }
+
+  .yt-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+  }
+
+  .yt-click-to-load:hover .yt-thumb-img {
+    transform: scale(1.03);
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 22%, transparent 78%, rgba(0,0,0,0.65) 100%);
+    transition: background 0.3s ease;
+    z-index: 2;
+  }
+
+  .yt-click-to-load:hover .video-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.5) 100%);
+  }
+
+  .video-overlay-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .video-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(0, 0, 0, 0.55);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .video-duration {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--gold-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 163, 89, 0.35);
+  }
+
+  .play-circle-btn {
+    align-self: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--gold-warm);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 20px rgba(212, 163, 89, 0.4);
+    transition: transform 0.25s ease, background 0.2s ease, box-shadow 0.25s ease;
+  }
+
+  .yt-click-to-load:hover .play-circle-btn {
+    transform: scale(1.12);
+    background: var(--gold-light);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.8), 0 0 35px rgba(212, 163, 89, 0.75);
+  }
+
+  .video-overlay-bottom {
+    display: flex;
+    justify-content: center;
+  }
+
+  .video-cue {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-sm);
+  }
+</style>
+
+<script>
+  function setupYouTubePlayers() {
+    const cards = document.querySelectorAll<HTMLElement>('.yt-click-to-load');
+
+    cards.forEach((card) => {
+      // Avoid duplicate listener registration
+      if (card.dataset.initialized === 'true') return;
+      card.dataset.initialized = 'true';
+
+      card.addEventListener('click', () => {
+        const videoId = card.dataset.youtubeId;
+        const videoTitle = card.dataset.youtubeTitle || 'Kathak Performance Video';
+        if (!videoId) return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.title = videoTitle;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        iframe.style.border = '0';
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+
+        // Clear thumbnail and overlay, insert active iframe
+        card.innerHTML = '';
+        card.appendChild(iframe);
+      });
+    });
+  }
+
+  // Run on initial page load and on Astro view transitions
+  setupYouTubePlayers();
+  document.addEventListener('astro:page-load', setupYouTubePlayers);
+</script>

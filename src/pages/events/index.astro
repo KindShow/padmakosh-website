@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadPadmakoshSiteData } from '../../lib/sanity';
+
+const referenceNow = new Date('2026-11-10T15:00:00+05:30');
+const { publicEvents, artistProfile } = await loadPadmakoshSiteData(referenceNow);
+---
+
+<BaseLayout
+  title="Events, Baithaks & Music Workshops | Padmakosh School of Kathak, Pune"
+  description="Upcoming performances, music-related events, baithaks, and repertoire archive at Padmakosh School of Kathak and Padmakosh Studio in Bavdhan, Pune."
+  canonicalPath="/events/"
+>
+  <!-- Page Header -->
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="container container--narrow">
+      <span class="kicker kicker--dark">SEASON &amp; ARCHIVE</span>
+      <h1 style="font-size: var(--text-hero); margin-bottom: 1.5rem; line-height: 1.05;">
+        Events &amp; Performances
+      </h1>
+      <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--text-primary); font-family: var(--font-display); margin-bottom: 1.75rem;">
+        Performances, baithaks, and intensive workshops presented by Padmakosh School of Kathak and visiting artists in Bavdhan, Pune.
+      </p>
+
+      <!-- Highlighted Associated Music Instructors Callout Higher in Body Section -->
+      <div style="background: var(--bg-subtle); border: 1px solid rgba(212, 163, 89, 0.45); border-left: 4px solid var(--maroon-rich); padding: 1.25rem 1.5rem; border-radius: var(--radius-sm);">
+        <p style="margin: 0; font-size: 0.92rem; line-height: 1.7; color: var(--text-primary);">
+          <strong style="color: var(--maroon-rich); font-weight: 700;">Associated Music Instructors for Studio Events:</strong> Music-related events, classical baithaks, and accompaniment workshops hosted at Padmakosh Studio are conducted in association with music instructors <mark style="background: rgba(212, 163, 89, 0.25); color: var(--maroon-deep); font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 3px;">Shri. Anil Pendse</mark> and <mark style="background: rgba(212, 163, 89, 0.25); color: var(--maroon-deep); font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 3px;">Smt. Anjali Pendse</mark>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Listing -->
+  <section class="section section--subtle">
+    <div class="container">
+      {publicEvents.activeOrUpcoming.length === 0 ? (
+        <div class="sleek-card" style="text-align: center; padding: clamp(3rem, 6vw, 5rem); max-width: 780px; margin-inline: auto;">
+          <span class="kicker kicker--dark">UPCOMING CALENDAR</span>
+          <h2 style="font-size: var(--text-2xl); margin-bottom: 1rem;">
+            Upcoming events will be announced here.
+          </h2>
+          <p style="font-size: 0.95rem; line-height: 1.7; max-width: 52ch; margin-inline: auto; margin-bottom: 2rem;">
+            New baithaks, music-related events, workshops, and seasonal student showcases for the upcoming term will be published as schedules are finalised.
+          </p>
+          <a href="/contact/" class="btn btn--maroon">
+            INVITE PADMAKOSH FOR A PERFORMANCE
+          </a>
+        </div>
+      ) : (
+        <div class="grid-2">
+          {/* Active events would render here */}
+        </div>
+      )}
+
+      <!-- Repertoire Archive Highlights -->
+      <div style="margin-top: 5rem;">
+        <span class="kicker kicker--dark">ARCHIVE</span>
+        <h2 style="font-size: var(--text-2xl); margin-bottom: 2rem;">
+          Selected Performance Repertoire
+        </h2>
+
+        <div class="grid-2">
+          <div class="sleek-card">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--maroon-rich);">
+              Festival Stages
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; font-size: 0.9rem;">
+              {artistProfile.historicalPerformancesCandidateList
+                .filter((i) => i.kind === 'festival')
+                .map((f) => (
+                  <li style="display: flex; gap: 0.5rem;">
+                    <span style="color: var(--gold-dark);">◆</span>
+                    <span>{f.title}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+
+          <div class="sleek-card">
+            <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--gold-dark);">
+              Original Thematic Productions
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; font-size: 0.9rem;">
+              {artistProfile.historicalPerformancesCandidateList
+                .filter((i) => i.kind === 'production')
+                .map((p) => (
+                  <li style="display: flex; gap: 0.5rem;">
+                    <span style="color: var(--maroon-rich);">◆</span>
+                    <span>{p.title}</span>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

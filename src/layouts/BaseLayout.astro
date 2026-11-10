@@ -1,0 +1,151 @@
+---
+import '../styles/design-system.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { isIndexingAllowed } from '../lib/sanity';
+import { SITE_SETTINGS_FIXTURE } from '../data/fixtures';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonicalPath?: string;
+  structuredDataExtra?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  keywords = 'Kathak classes in Bavdhan Pune, Kathak classes near Kothrud, Kathak classes near Aundh, Kathak classes near Pashan, Kathak classes near Baner, Kathak classes Warje, dance studio in Bavdhan Pune, Padmakosh School of Kathak, Padmakosh Studio, Sonal Pendse Kathak, Gandharva Mahavidyalaya Kathak classes Pune, Bharati Vidyapeeth Kathak certification Pune, online Kathak classes',
+  canonicalPath = Astro.url.pathname,
+  structuredDataExtra = [],
+} = Astro.props;
+
+const allowIndexing = isIndexingAllowed();
+const siteOrigin = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://padmakoshstudio.in';
+const canonicalUrl = `${siteOrigin}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
+
+const verifiedOrganizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['EducationalOrganization', 'PerformingArtsTheater', 'LocalBusiness'],
+  '@id': `${siteOrigin}/#institution`,
+  name: SITE_SETTINGS_FIXTURE.schoolName.value,
+  alternateName: SITE_SETTINGS_FIXTURE.secondaryBrandName.value,
+  description:
+    'Padmakosh School of Kathak and Padmakosh Studio in Bavdhan, Pune offer personalized classical Kathak classes for all age groups across weekday, weekend, and virtual batches, affiliated with Gandharva Mahavidyalaya and Bharati Vidyapeeth. Serving Bavdhan, Kothrud, Aundh, Pashan, Baner, and Warje.',
+  url: siteOrigin,
+  email: SITE_SETTINGS_FIXTURE.emailCandidate.value,
+  telephone: '+91-96896-15339',
+  hasMap: SITE_SETTINGS_FIXTURE.socialLinks.googleBusinessProfile,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress:
+      'B-501, Lohia Jain Square, S. No. 52/1B, Bavdhan, Access NDA-Pashan Road, Behind Maratha Mandir, Opposite Shinde Pump, Vaidehi Enclave',
+    addressLocality: 'Bavdhan, Pune',
+    addressRegion: 'Maharashtra',
+    postalCode: SITE_SETTINGS_FIXTURE.postalCode.value,
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 18.5167,
+    longitude: 73.7766,
+  },
+  areaServed: [
+    { '@type': 'Place', name: 'Bavdhan, Pune' },
+    { '@type': 'Place', name: 'Kothrud, Pune' },
+    { '@type': 'Place', name: 'Aundh, Pune' },
+    { '@type': 'Place', name: 'Pashan, Pune' },
+    { '@type': 'Place', name: 'Baner, Pune' },
+    { '@type': 'Place', name: 'Warje, Pune' },
+    { '@type': 'City', name: 'Pune' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Kathak Learning Programs & Dance Studio Services',
+    itemListElement: [
+      {
+        '@type': 'Course',
+        name: 'Primary, Intermediate & Advanced Classical Kathak Classes (Weekday, Weekend & Online)',
+        description:
+          'Personalized Kathak training for all age groups in Bavdhan, Pune (serving Kothrud, Aundh, Pashan, Baner & Warje), affiliated with Gandharva Mahavidyalaya and Bharati Vidyapeeth.',
+        provider: {
+          '@type': 'EducationalOrganization',
+          name: 'Padmakosh School of Kathak',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Padmakosh Dance & Rehearsal Studio Space in Bavdhan, Pune',
+          description:
+            '750 sq. ft. air-conditioned dance and rehearsal studio in Lohia Jain Square, Bavdhan, Pune with full-wall video projection, Wi-Fi, and professional sound.',
+        },
+      },
+    ],
+  },
+  sameAs: [
+    SITE_SETTINGS_FIXTURE.socialLinks.youtubeChannel,
+    SITE_SETTINGS_FIXTURE.socialLinks.instagramProfile,
+    SITE_SETTINGS_FIXTURE.socialLinks.googleBusinessProfile,
+    ...(SITE_SETTINGS_FIXTURE.socialLinks.facebookProfile
+      ? [SITE_SETTINGS_FIXTURE.socialLinks.facebookProfile]
+      : []),
+  ],
+};
+
+const jsonLdNodes = [verifiedOrganizationJsonLd, ...structuredDataExtra];
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Local Geo SEO Meta Tags for Bavdhan & West Pune -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Bavdhan, Pune, Maharashtra" />
+    <meta name="geo.position" content="18.5167;73.7766" />
+    <meta name="ICBM" content="18.5167, 73.7766" />
+
+    {!allowIndexing ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow" />
+    )}
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_SETTINGS_FIXTURE.schoolName.value} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_IN" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdNodes)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppButton />
+  </body>
+</html>

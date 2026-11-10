@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { LOCAL_TEST_EVENT_FIXTURES } from '../../data/fixtures';
+import { evaluateEvent } from '../../lib/events';
+
+export async function getStaticPaths() {
+  const referenceNow = new Date('2026-11-10T15:00:00+05:30');
+  const approvedEvents = LOCAL_TEST_EVENT_FIXTURES.filter(
+    (eventDoc) => eventDoc.approvedForPublic && !eventDoc.isLocalTestFixture
+  );
+  return approvedEvents.map((eventDoc) => ({
+    params: { slug: eventDoc.slug },
+    props: {
+      evaluated: evaluateEvent(eventDoc, referenceNow),
+    },
+  }));
+}
+
+const { evaluated } = Astro.props;
+const { event, formattedDateRangeIST } = evaluated;
+---
+
+<BaseLayout
+  title={`${event.title} | Padmakosh Events`}
+  description={event.summary}
+  canonicalPath={`/events/${event.slug}/`}
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <p style="margin-bottom: 2rem;">
+        <a href="/events/" style="font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--gold-dark);">
+          ← Back to Events
+        </a>
+      </p>
+
+      <div class="sleek-card">
+        <div>
+          <span class="kicker kicker--dark">{event.category.replace('-', ' ')}</span>
+          <h1 style="font-size: var(--text-3xl); margin-bottom: 1.5rem; line-height: 1.15;">
+            {event.title}
+          </h1>
+
+          <div style="background: var(--bg-subtle); border-left: 2px solid var(--maroon-rich); padding: 1.25rem; margin-bottom: 2rem; font-size: 0.9rem;">
+            <p style="margin-bottom: 0.4rem;"><strong>Date &amp; Time:</strong> {formattedDateRangeIST}</p>
+            <p style="margin-bottom: 0.4rem;"><strong>Venue:</strong> {event.venueName} — {event.venueAddress}</p>
+            <p style="margin-bottom: 0;"><strong>Attendance:</strong> {event.attendanceMode.replace('_', ' ')} · <strong>Organiser:</strong> {event.organiser}</p>
+          </div>
+
+          {event.body.map((p) => (
+            <p style="line-height: 1.8; margin-bottom: 1.25rem;">{p}</p>
+          ))}
+        </div>
+
+        <div style="margin-top: 2rem; border-top: 1px solid var(--border-light); padding-top: 1.5rem;">
+          <a href="/contact/" class="btn btn--maroon">
+            ENQUIRE ABOUT PERFORMANCES
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

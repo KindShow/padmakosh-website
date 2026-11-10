@@ -1,0 +1,83 @@
+---
+import type { EvaluatedEvent } from '../lib/events';
+import EvidenceBadge from './EvidenceBadge.astro';
+
+interface Props {
+  evaluated: EvaluatedEvent;
+}
+
+const { evaluated } = Astro.props;
+const { event, temporalState, formattedDateRangeIST } = evaluated;
+
+const stateLabels: Record<typeof temporalState, { label: string; style: string }> = {
+  ongoing: {
+    label: '● Ongoing Now (Asia/Kolkata)',
+    style: 'background: #e9f4ee; color: #154d31; border: 1px solid #9bd0b3;',
+  },
+  upcoming: {
+    label: 'Upcoming (Asia/Kolkata)',
+    style: 'background: #fbf5e6; color: #6e480b; border: 1px solid #e2c084;',
+  },
+  postponed: {
+    label: 'Postponed — New Date TBA',
+    style: 'background: #fef3c7; color: #92400e; border: 1px solid #f59e0b;',
+  },
+  cancelled: {
+    label: 'Cancelled',
+    style: 'background: #fbecec; color: #741b25; border: 1px solid #dfa3aa;',
+  },
+  date_tba: {
+    label: 'Date To Be Announced',
+    style: 'background: #f3f4f6; color: #374151; border: 1px solid #d1d5db;',
+  },
+  archived: {
+    label: 'Past / Archived (Asia/Kolkata)',
+    style: 'background: #efe6d6; color: #4a433e; border: 1px solid #d6c7b2;',
+  },
+};
+
+const badge = stateLabels[temporalState];
+---
+
+<article class="card card--maroon-accent">
+  <div>
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+      <span class="evidence-badge" style={badge.style}>
+        {badge.label}
+      </span>
+      {event.isLocalTestFixture && (
+        <EvidenceBadge tier="placeholder" label="Local Test Fixture (Excluded from Public Output)" />
+      )}
+    </div>
+
+    <span class="kicker" style="margin-bottom: 0.35rem;">{event.category.replace('-', ' ')}</span>
+    <h3 style="font-size: var(--text-xl); margin-bottom: 0.5rem;">
+      <a href={`/events/${event.slug}/`} style="text-decoration: none;">
+        {event.title}
+      </a>
+    </h3>
+
+    <p style="font-size: var(--text-sm); font-weight: 600; color: var(--color-maroon-800); margin-bottom: 0.5rem;">
+      🗓 {formattedDateRangeIST}
+    </p>
+
+    <p style="font-size: var(--text-xs); color: var(--color-charcoal-600); margin-bottom: 0.75rem;">
+      📍 {event.venueName} · {event.venueAddress} · Mode: {event.attendanceMode.replace('_', ' ')}
+    </p>
+
+    <p style="font-size: var(--text-sm); color: var(--color-charcoal-700);">
+      {event.summary}
+    </p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding-top: 0.85rem; border-top: 1px solid var(--color-ivory-200); margin-top: 0.75rem;">
+    <a href={`/events/${event.slug}/`} class="btn btn--secondary" style="padding: 0.5rem 1rem; font-size: var(--text-xs);">
+      View Event Details →
+    </a>
+    {event.confirmedOfferSummary && temporalState !== 'cancelled' && (
+      <span style="font-size: var(--text-xs); color: var(--color-charcoal-600);">
+        {event.confirmedOfferSummary}
+      </span>
+    )}
+  </div>
+</article>

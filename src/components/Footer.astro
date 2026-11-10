@@ -1,0 +1,281 @@
+---
+import { SITE_SETTINGS_FIXTURE } from '../data/fixtures';
+---
+
+<footer class="sleek-footer">
+  <div class="container" style="padding-block: clamp(3.5rem, 6vw, 5rem);">
+    <div class="grid-3" style="gap: 3.5rem; align-items: start;">
+      <!-- Column 1: Brand & Social Icons -->
+      <div>
+        <a href="/" class="footer-brand" style="display: inline-block; text-decoration: none;">
+          <img
+            src="/images/logo/padmakosh_studio_logo_footer.png"
+            alt="Padmakosh Studio — School of Kathak, Pune"
+            width="230"
+            height="120"
+            style="height: 96px; width: auto; max-width: 220px; object-fit: contain; display: block;"
+          />
+        </a>
+        <p style="font-size: 0.88rem; color: #9c9596; margin-top: 1rem; line-height: 1.7; max-width: 36ch;">
+          Classical Kathak institution and dance studio in Bavdhan, Pune — under the artistic direction of Sonal Pendse.
+        </p>
+        <div style="font-size: 0.88rem; color: #d4a359; margin-top: 0.85rem; margin-bottom: 1.5rem; display: grid; gap: 0.4rem;">
+          <div>
+            Phone / WhatsApp: <a href="tel:+919689615339" style="color: #ffffff; font-weight: 600; text-decoration: underline;">+91 96896 15339</a>
+          </div>
+          <div>
+            Email: <a href="mailto:sonalpatil286@gmail.com" style="color: inherit; text-decoration: underline;">sonalpatil286@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Smart Social Icon Links (Instagram, Facebook, YouTube, Google Profile) -->
+        <div class="social-icon-row" aria-label="Social Media Profiles">
+          <a
+            href={SITE_SETTINGS_FIXTURE.socialLinks.instagramProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon-btn"
+            aria-label="Follow Padmakosh on Instagram"
+            title="Instagram"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+
+          <a
+            href={SITE_SETTINGS_FIXTURE.socialLinks.facebookProfile || 'https://www.facebook.com/padmakosh'}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon-btn"
+            aria-label="Follow Padmakosh on Facebook"
+            title="Facebook"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+
+          <a
+            href={SITE_SETTINGS_FIXTURE.socialLinks.youtubeChannel}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon-btn"
+            aria-label="Watch Padmakosh on YouTube"
+            title="YouTube"
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+            </svg>
+          </a>
+
+          <a
+            href={SITE_SETTINGS_FIXTURE.socialLinks.googleBusinessProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon-btn"
+            aria-label="View Padmakosh on Google Maps & Business Profile"
+            title="Google Business Profile"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Navigation & Local Areas -->
+      <div>
+        <span class="footer-heading">NAVIGATION</span>
+        <ul class="footer-nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About Padmakosh</a></li>
+          <li><a href="/classes/">Kathak Classes</a></li>
+          <li><a href="/sonal-pendse/">Sonal Pendse</a></li>
+          <li><a href="/studio/">Padmakosh Studio</a></li>
+          <li><a href="/events/">Events &amp; Archive</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+          <li><a href="/contact/">Contact &amp; Admissions</a></li>
+          <li><a href="/privacy/">Privacy Policy</a></li>
+        </ul>
+
+        <div style="margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <span style="display: block; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-warm); font-weight: 700; margin-bottom: 0.45rem;">
+            WEST PUNE REACH
+          </span>
+          <p style="font-size: 0.8rem; color: #9c9596; line-height: 1.6; margin-bottom: 0;">
+            Kathak classes &amp; dance studio in <strong>Bavdhan, Pune</strong> — serving nearby areas including <strong>Kothrud, Warje, Pashan, Aundh, and Baner</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Column 3: Interactive Embedded Google Map (Matching Contact Page Map) -->
+      <div>
+        <span class="footer-heading">BAVDHAN, PUNE · STUDIO MAP</span>
+        <p style="font-size: 0.82rem; color: #c8c2c0; margin-bottom: 0.85rem; line-height: 1.6;">
+          <strong style="color: #ffffff; font-weight: 600;">Padmakosh Studio</strong><br />
+          B-501, Lohia Jain Square, S. No. 52/1B, Bavdhan,<br />
+          Access NDA-Pashan Road, Behind Maratha Mandir,<br />
+          Opposite Shinde Pump, Vaidehi Enclave,<br />
+          Pune, Maharashtra 411021
+        </p>
+
+        <div class="footer-map-embed-wrap">
+          <iframe
+            title="Padmakosh Studio Location Map in Bavdhan, Pune"
+            src="https://www.google.com/maps?q=Padmakosh+Studio+Lohia+Jain+Square+Bavdhan+Pune+411021&output=embed"
+            width="100%"
+            height="195"
+            style="border: 0; display: block;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <a
+          href={SITE_SETTINGS_FIXTURE.socialLinks.googleBusinessProfile}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-map-link"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Open on Google Business Profile &amp; Maps ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} Padmakosh School of Kathak &amp; Padmakosh Studio. All rights reserved.</span>
+      <span>Affiliated with Gandharva Mahavidyalaya &amp; Bharati Vidyapeeth · Bavdhan, Pune</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .sleek-footer {
+    background-color: #0d0a0b;
+    color: #fbf9f6;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: auto;
+  }
+
+  .footer-brand .brand-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: #ffffff;
+    display: block;
+  }
+
+  .footer-brand .brand-sub {
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #b8b2b0;
+    font-weight: 600;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .footer-heading {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold-warm);
+    margin-bottom: 1.1rem;
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-nav-list a {
+    color: #b8b2b0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav-list a:hover {
+    color: var(--gold-light);
+  }
+
+  .social-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .social-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 163, 89, 0.35);
+    color: #d4a359;
+    transition: all 0.25s ease;
+  }
+
+  .social-icon-btn:hover {
+    background: linear-gradient(135deg, #6d1b28 0%, #4a101b 100%);
+    border-color: var(--gold-light);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(212, 163, 89, 0.35);
+  }
+
+  .footer-map-embed-wrap {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 163, 89, 0.3);
+    background: #181416;
+    margin-bottom: 0.65rem;
+  }
+
+  .footer-map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--gold-warm);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-map-link:hover {
+    color: var(--gold-light);
+    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.72rem;
+    color: #7c7576;
+  }
+</style>

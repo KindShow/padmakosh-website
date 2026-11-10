@@ -1,0 +1,24 @@
+{
+  "name": "padmakosh-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Padmakosh School of Kathak & Padmakosh Studio — Astro + TypeScript + Sanity local review build",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test:events": "node --experimental-strip-types scripts/verify-events-and-safety.ts"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.24.0",
+    "astro": "^5.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.8.2"
+  }
+}

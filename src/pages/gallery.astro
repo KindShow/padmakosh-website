@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPadmakoshSiteData } from '../lib/sanity';
+import ClickToLoadYouTube from '../components/ClickToLoadYouTube.astro';
+
+const { allYoutubeInventory } = await loadPadmakoshSiteData();
+
+// Curated high-impact photos matching native aspect ratios so zero faces or mudras are cropped
+const galleryPhotos = [
+  { src: '/images/gallery/KAU_0072.jpg', title: 'Kathak Stage Repertoire', sub: 'Teal & Gold Costume · Full Mudra', span: 'tall', pos: 'center 10%' },
+  { src: '/images/gallery/KAU_0159.jpg', title: 'Laya & Footwork', sub: 'Tatkar & Hasta Mudra Precision', span: 'wide', pos: 'center 15%' },
+  { src: '/images/curated/sonal_abhinaya.jpg', title: 'Abhinaya Expression', sub: 'Eyes & Poetic Devotion', span: 'tall', pos: 'center 8%' },
+  { src: '/images/gallery/KAU_0258.jpg', title: 'Mudra & Alignment', sub: 'Anga Shuddhi & Posture', span: 'wide', pos: 'center 15%' },
+  { src: '/images/curated/sonal_pirouette.jpg', title: 'Chakkar & Pirouette', sub: 'Classical Balance', span: 'tall', pos: 'center 10%' },
+  { src: '/images/gallery/KAU_6116.jpg', title: 'Padhant & Riyaaz', sub: 'Spoken Syllables & Mudra', span: 'wide', pos: 'center 12%' },
+  { src: '/images/curated/studio_rehearsal_2.jpg', title: 'Ensemble Riyaaz', sub: 'Bavdhan Studio Practice', span: 'wide', pos: 'center 15%' },
+  { src: '/images/gallery/KAU_6171.jpg', title: 'Stage Concentration', sub: 'Choreographic Rehearsal', span: 'tall', pos: 'center 10%' },
+  { src: '/images/curated/studio_rehearsal_1.jpg', title: 'Studio Atmosphere', sub: 'Lohia Jain Square, Bavdhan', span: 'wide', pos: 'center 20%' },
+  { src: '/images/gallery/KAU_6227.jpg', title: 'Classical Hastak', sub: 'Hand Gesture Vocabulary', span: 'tall', pos: 'center 10%' },
+  { src: '/images/gallery/KAU_6262.jpg', title: 'Rhythm in Motion', sub: 'Kathak Parampara', span: 'tall', pos: 'center 10%' },
+  { src: '/images/curated/grand_stage_performance.jpg', title: 'Grand Ensemble Stage', sub: 'Festival Presentation', span: 'wide', pos: 'center 15%' },
+];
+---
+
+<BaseLayout
+  title="Performance & Video Gallery | Padmakosh School of Kathak"
+  description="Curated performance videos and stage photography from Padmakosh School of Kathak and Padmakosh Studio in Bavdhan, Pune."
+  canonicalPath="/gallery/"
+>
+  <!-- Page Header -->
+  <section class="section" style="padding-bottom: 2rem;">
+    <div class="container container--narrow">
+      <span class="kicker kicker--dark">MEDIA ARCHIVE</span>
+      <h1 style="font-size: var(--text-hero); margin-bottom: 1.5rem; line-height: 1.05;">
+        Performance &amp; Stage Gallery
+      </h1>
+      <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--text-primary); font-family: var(--font-display);">
+        Visual documentation of classical Kathak presentations, abhinaya expressions, and studio riyaaz in Bavdhan, Pune.
+      </p>
+    </div>
+  </section>
+
+  <!-- Video Section with Real YouTube Thumbnails -->
+  <section class="section section--subtle">
+    <div class="container">
+      <div style="margin-bottom: 3rem;">
+        <span class="kicker kicker--dark">CHANNEL RECORDINGS</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 0.5rem;">Repertoire on Film</h2>
+        <p style="max-width: 54ch; color: var(--text-muted); margin-bottom: 0;">
+          Curated video recordings spanning classical taals, devotional abhinaya, and student learning journeys. Click any recording to play.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap: 3rem;">
+        {allYoutubeInventory.map((video) => (
+          <div>
+            <ClickToLoadYouTube video={video} />
+            <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;">
+              <h3 style="font-size: 1.15rem; margin-bottom: 0;">{video.title}</h3>
+              <a href={video.url} target="_blank" rel="noopener noreferrer" style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); font-weight: 700; white-space: nowrap;">
+                YOUTUBE ↗
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Grid with Mudra & Expression Focus -->
+  <section class="section">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="kicker kicker--dark">PHOTOGRAPHIC ARCHIVE</span>
+          <h2 style="font-size: var(--text-2xl); margin-bottom: 0;">Stage &amp; Studio Imagery</h2>
+        </div>
+        <span style="font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.12em;">
+          Official Archive Captures
+        </span>
+      </div>
+
+      <div class="photo-mosaic-grid">
+        {galleryPhotos.map((photo) => (
+          <div class={`mosaic-item mosaic-item--${photo.span}`}>
+            <img
+              src={photo.src}
+              alt={photo.title}
+              loading="lazy"
+              style={`object-position: ${photo.pos};`}
+            />
+            <div class="mosaic-caption">
+              <span class="mosaic-sub">{photo.sub}</span>
+              <h3 class="mosaic-title">{photo.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .photo-mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .mosaic-item {
+    position: relative;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: #0f0b0d;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+  }
+
+  .mosaic-item--tall {
+    aspect-ratio: 3 / 4;
+  }
+
+  .mosaic-item--wide {
+    aspect-ratio: 16 / 10;
+  }
+
+  @media (min-width: 1024px) {
+    .mosaic-item--wide {
+      grid-column: span 2;
+    }
+  }
+
+  .mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .mosaic-item:hover img {
+    transform: scale(1.04);
+  }
+
+  .mosaic-caption {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 6, 8, 0.88) 100%);
+    color: #ffffff;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+
+  .mosaic-item:hover .mosaic-caption {
+    opacity: 1;
+  }
+
+  .mosaic-sub {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-warm);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .mosaic-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+  }
+</style>

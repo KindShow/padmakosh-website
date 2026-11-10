@@ -1,0 +1,1102 @@
+/* ============================================================================
+   Padmakosh School of Kathak — Sleek Editorial Arts Design System
+   Inspired by elite performing arts institutions & contemporary cultural centres.
+   Warm Ivory, Deep Theatrical Maroon, Gilded Amber/Gold, and Stage Obsidian.
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Surface & Base */
+  --bg-primary: #ffffff;
+  --bg-subtle: #faf8f5;
+  --bg-warm: #f4efe6;
+  --bg-dark: #0a0809;
+  --bg-stage: #110d10;
+
+  /* Ink / Typography */
+  --text-primary: #121012;
+  --text-muted: #5e595a;
+  --text-light: #8e8788;
+  --text-on-dark: #fbf9f6;
+  --text-on-dark-muted: #b8b2b0;
+
+  /* Brand Accents */
+  --maroon-deep: #4a0d16;
+  --maroon-rich: #6d1522;
+  --maroon-hover: #861b2c;
+  --gold-warm: #d4a359;
+  --gold-light: #ebd09e;
+  --gold-dark: #9e7432;
+  --teal-stage: #1b4b52;
+
+  /* Borders & Dividers */
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-gold: rgba(212, 163, 89, 0.35);
+
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Fluid Type Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.18rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.1rem;
+  --text-3xl: clamp(2.4rem, 4.2vw, 3.8rem);
+  --text-hero: clamp(3.2rem, 6.5vw, 6.2rem);
+
+  /* Spacing */
+  --space-unit: 1rem;
+  --container-max: 1240px;
+  --container-narrow: 860px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-pill: 9999px;
+
+  /* Smooth Transitions */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 280ms;
+}
+
+/* Reset & Basics */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+main {
+  flex: 1;
+}
+
+/* Accessibility & Focus */
+:focus-visible {
+  outline: 2px solid var(--gold-warm);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  z-index: 1000;
+  background: var(--maroon-deep);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 1.5rem;
+}
+
+/* Sleek Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: var(--text-xl);
+  font-weight: 500;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration) var(--ease-editorial);
+}
+
+/* Italic & Golden Emphasis */
+.italic-accent {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.gold-accent {
+  color: var(--gold-warm);
+}
+
+/* Editorial Kicker / Eyebrow */
+.kicker {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--gold-warm);
+  margin-bottom: 1rem;
+}
+
+.kicker--dark {
+  color: var(--maroon-rich);
+}
+
+/* Layout Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+  position: relative;
+}
+
+.section--subtle {
+  background-color: var(--bg-subtle);
+  border-block: 1px solid var(--border-light);
+}
+
+.section--dark {
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.section--dark h1,
+.section--dark h2,
+.section--dark h3,
+.section--dark h4 {
+  color: var(--text-on-dark);
+}
+
+.section--dark p {
+  color: var(--text-on-dark-muted);
+}
+
+/* Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3.5vw, 2.75rem);
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Sleek Buttons */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease-editorial);
+}
+
+.btn--gold {
+  background-color: var(--gold-warm);
+  color: #0d0a0b;
+  border-color: var(--gold-warm);
+}
+.btn--gold:hover {
+  background-color: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.btn--maroon {
+  background-color: var(--maroon-deep);
+  color: #ffffff;
+  border-color: var(--maroon-deep);
+}
+.btn--maroon:hover {
+  background-color: var(--maroon-hover);
+  border-color: var(--maroon-hover);
+  color: #ffffff;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+.btn--ghost:hover {
+  border-color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.btn--ghost-light {
+  background: transparent;
+  color: var(--text-on-dark);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.btn--ghost-light:hover {
+  border-color: var(--gold-warm);
+  color: var(--gold-light);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* Cards & Editorial Blocks */
+.sleek-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--duration) var(--ease-editorial);
+}
+
+.sleek-card:hover {
+  border-color: var(--gold-warm);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.06);
+}
+
+.sleek-card--dark {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--border-dark);
+}
+.sleek-card--dark:hover {
+  border-color: var(--gold-warm);
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   Theatrical Hero Stage (Inspired by Padatik reference)
+   A real, vibrant, high-impact photo of the dancer prominently illuminated
+   under stage spotlights, with expression & mudras fully visible!
+   ============================================================================ */
+/* ============================================================================
+   Full-Bleed Theatrical Hero Stage (Inspired directly by Padatik Reference)
+   Stage photograph fills the entire hero section edge-to-edge, with mobile
+   compatibility and responsive typography.
+   ============================================================================ */
+.hero-stage-full {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #0b0608;
+  color: #ffffff;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.hero-stage-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-stage-bg picture,
+.hero-stage-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right 25%;
+  display: block;
+}
+
+/* Theatrical Scrim Overlay:
+   Desktop: dark fade on the left so typography is razor-sharp and high-contrast,
+   revealing the illuminated dancer on the right.
+   Mobile: dark vertical scrim so text is crisp above the centered dancer. */
+.hero-theatrical-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #080406 0%,
+    rgba(8, 4, 6, 0.94) 36%,
+    rgba(8, 4, 6, 0.68) 55%,
+    rgba(8, 4, 6, 0.15) 75%,
+    rgba(8, 4, 6, 0.45) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-ambient-spotlight {
+  position: absolute;
+  top: 20%;
+  right: 18%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(220, 140, 45, 0.28) 0%, rgba(109, 21, 34, 0.15) 60%, transparent 80%);
+  filter: blur(50px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-content-layer {
+  position: relative;
+  z-index: 10;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.hero-editorial-column {
+  max-width: 620px;
+}
+
+.hero-kicker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(212, 163, 89, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+.hero-kicker-sep {
+  opacity: 0.5;
+  color: #ffffff;
+}
+
+.hero-kicker-sub {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.68rem;
+}
+
+.hero-display-title {
+  font-size: var(--text-hero);
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 1.75rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.hero-display-lead {
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-actions-cluster {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.btn--whatsapp-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #7b1d2e 0%, #54111e 100%);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 8px 20px -4px rgba(109, 27, 40, 0.4);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(212, 163, 89, 0.4);
+}
+
+.btn--whatsapp-hero:hover {
+  background: linear-gradient(135deg, #c88937 0%, #ad7124 100%);
+  border-color: #e2a857;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(200, 137, 55, 0.5);
+}
+
+.hero-artist-credit {
+  border-left: 2px solid var(--gold-warm);
+  padding-left: 1.25rem;
+}
+
+.hero-artist-kicker {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold-light);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.hero-artist-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.hero-artist-lineage {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 0.15rem;
+}
+
+/* Mobile Responsiveness for Hero */
+@media (max-width: 768px) {
+  .hero-stage-full {
+    min-height: 86vh;
+    padding-top: 2rem;
+  }
+
+  .hero-stage-bg-img {
+    object-position: center 20%;
+  }
+
+  .hero-theatrical-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 4, 6, 0.88) 0%,
+      rgba(8, 4, 6, 0.7) 40%,
+      rgba(8, 4, 6, 0.92) 85%,
+      #080406 100%
+    );
+  }
+
+  .hero-editorial-column {
+    max-width: 100%;
+  }
+
+  .hero-kicker-badge {
+    flex-wrap: wrap;
+    font-size: 0.68rem;
+  }
+
+  .hero-actions-cluster {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-actions-cluster .btn {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.hero-stage {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 75% 35%, #2a0b12 0%, #12070a 45%, #080506 100%);
+  color: #ffffff;
+  overflow: hidden;
+  padding-block: clamp(4rem, 7vw, 7rem);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.hero-theatre-frame {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 25px 65px -15px rgba(0, 0, 0, 0.9), 0 0 50px rgba(212, 163, 89, 0.2);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  background: #080506;
+}
+
+.theatre-spotlight {
+  position: absolute;
+  top: 15%;
+  right: 20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(220, 140, 45, 0.35) 0%, rgba(109, 21, 34, 0.2) 60%, transparent 80%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-dancer-img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.hero-theatre-frame:hover .hero-dancer-img {
+  transform: scale(1.02);
+}
+
+.hero-photo-badge {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 1.5rem 1.75rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 5, 6, 0.9) 35%, #080506 100%);
+  z-index: 3;
+}
+
+.hero-photo-badge .badge-role {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-warm);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.hero-photo-badge .badge-name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: #ffffff;
+  display: block;
+  line-height: 1.2;
+}
+
+.hero-photo-badge .badge-lineage {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* ============================================================================
+   Interactive Mudra & Repertoire Explorer Tabs
+   ============================================================================ */
+.interactive-tab-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.interactive-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.interactive-tab-btn.active {
+  color: var(--maroon-rich);
+  border-bottom-color: var(--maroon-rich);
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.tab-pane.active {
+  display: grid;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Minimalist Form Elements */
+.sleek-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.sleek-form label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.sleek-form .input-field,
+.sleek-form .select-field,
+.sleek-form .textarea-field {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d4cece;
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: border-color var(--duration);
+}
+
+.sleek-form .input-field:focus,
+.sleek-form .select-field:focus,
+.sleek-form .textarea-field:focus {
+  outline: none;
+  border-color: var(--maroon-deep);
+  box-shadow: 0 0 0 1px var(--maroon-deep);
+}
+
+/* Subtle Table */
+.sleek-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.sleek-table th {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sleek-table td {
+  padding: 1.1rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-muted);
+}
+
+/* ============================================================================
+   Creative Animated Hero Stage (Kimi-inspired Architecture & Interactions)
+   Warm, luminous editorial palette, animated ambient orbs, classical arch
+   portal, floating glassmorphic rhythm badges, and live rhythmic wave bars!
+   ============================================================================ */
+.creative-hero-section {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 80% 25%, #FAF1E8 0%, #F5EAE0 38%, #FFFDF9 100%);
+  color: var(--text-primary);
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.creative-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.creative-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(230, 115, 135, 0.22) 0%, rgba(212, 163, 89, 0.14) 50%, transparent 75%);
+  filter: blur(65px);
+  top: 5%;
+  right: 5%;
+  animation: orbDrift1 10s ease-in-out infinite alternate;
+}
+
+.creative-orb-2 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(244, 162, 70, 0.20) 0%, rgba(133, 28, 47, 0.12) 55%, transparent 75%);
+  filter: blur(55px);
+  bottom: 5%;
+  right: 32%;
+  animation: orbDrift2 12s ease-in-out infinite alternate;
+}
+
+.creative-kicker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(109, 27, 40, 0.08);
+  border: 1px solid rgba(109, 27, 40, 0.18);
+  color: #6d1b28;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.kicker-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a62a3f;
+  box-shadow: 0 0 8px #a62a3f;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.shimmer-gradient-text {
+  background: linear-gradient(135deg, #6d1b28 0%, #b23a4b 35%, #c88937 68%, #6d1b28 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 6s linear infinite;
+}
+
+.creative-stage-portal {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portal-mandala-ring {
+  position: absolute;
+  inset: -22px;
+  border-radius: 235px 235px 44px 44px;
+  border: 1.5px dashed rgba(212, 163, 89, 0.5);
+  box-shadow: 0 0 35px rgba(212, 163, 89, 0.18), inset 0 0 25px rgba(216, 88, 110, 0.08);
+  pointer-events: none;
+  z-index: 1;
+  animation: ringPulse 6s ease-in-out infinite alternate;
+}
+
+.portal-arch-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 490px;
+  border-radius: 215px 215px 30px 30px;
+  overflow: hidden;
+  background: #0c0809;
+  box-shadow: 0 25px 50px -12px rgba(109, 21, 34, 0.22), 0 10px 25px rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(212, 163, 89, 0.4);
+}
+
+.portal-arch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-arch-frame:hover .portal-arch-img {
+  transform: scale(1.04);
+}
+
+.portal-bottom-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(12, 6, 8, 0.82) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.portal-bottom-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 1.25rem 1.5rem;
+  z-index: 4;
+  color: #ffffff;
+}
+
+.portal-bottom-caption .caption-kicker {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold-warm);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.portal-bottom-caption .caption-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0;
+  color: #ffffff;
+}
+
+/* Floating Glassmorphic Badges */
+.portal-float-badge {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.55rem 1.05rem;
+  border-radius: 9999px;
+  box-shadow: 0 12px 30px -5px rgba(90, 20, 35, 0.15), 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.portal-float-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 36px -4px rgba(90, 20, 35, 0.22);
+}
+
+.badge-pos-top-left {
+  top: 10%;
+  left: -22px;
+  animation: badgeFloatA 4.5s ease-in-out infinite alternate;
+}
+
+.badge-pos-bottom-right {
+  bottom: 10%;
+  right: -24px;
+  border-radius: 14px;
+  padding: 0.6rem 1rem;
+  animation: badgeFloatB 5s ease-in-out infinite alternate;
+}
+
+.badge-pos-bottom-left {
+  bottom: -14px;
+  left: 8%;
+  animation: badgeFloatC 4s ease-in-out infinite alternate;
+}
+
+.badge-sparkle {
+  color: var(--gold-dark);
+  font-size: 0.85rem;
+}
+
+.badge-text-bold {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1a1416;
+}
+
+.rhythm-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.rhythm-bar {
+  width: 3px;
+  background: #a62a3f;
+  border-radius: 2px;
+}
+
+.rhythm-bar:nth-child(1) { animation: wavePulse 1.1s ease-in-out infinite; }
+.rhythm-bar:nth-child(2) { animation: wavePulse 1.1s ease-in-out 0.2s infinite; }
+.rhythm-bar:nth-child(3) { animation: wavePulse 1.1s ease-in-out 0.4s infinite; }
+.rhythm-bar:nth-child(4) { animation: wavePulse 1.1s ease-in-out 0.15s infinite; }
+
+.rhythm-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rhythm-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #1a1416;
+  line-height: 1.1;
+}
+
+.rhythm-sub {
+  font-size: 0.62rem;
+  color: #7a6e70;
+  letter-spacing: 0.04em;
+}
+
+.badge-dot-crimson {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c82845;
+  box-shadow: 0 0 6px rgba(200, 40, 69, 0.6);
+}
+
+/* Keyframes */
+@keyframes orbDrift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-35px, 25px) scale(1.1); }
+}
+
+@keyframes orbDrift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.08); }
+}
+
+@keyframes ringPulse {
+  0% { transform: scale(0.985); opacity: 0.7; }
+  100% { transform: scale(1.015); opacity: 1; }
+}
+
+@keyframes badgeFloatA {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes badgeFloatB {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(8px); }
+}
+
+@keyframes badgeFloatC {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
+}
+
+@keyframes wavePulse {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+@keyframes textShimmer {
+  to { background-position: 200% center; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Responsive adjustments for creative hero */
+@media (max-width: 900px) {
+  .creative-stage-portal {
+    margin-top: 2.5rem;
+    max-width: 360px;
+  }
+
+  .portal-arch-frame {
+    height: 420px;
+  }
+
+  .badge-pos-top-left {
+    left: -10px;
+  }
+
+  .badge-pos-bottom-right {
+    right: -10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .creative-stage-portal {
+    max-width: 320px;
+  }
+
+  .portal-arch-frame {
+    height: 380px;
+  }
+
+  .badge-pos-top-left {
+    left: 0;
+    top: 5%;
+  }
+
+  .badge-pos-bottom-right {
+    right: 0;
+    bottom: 5%;
+  }
+
+  .badge-pos-bottom-left {
+    display: none;
+  }
+}

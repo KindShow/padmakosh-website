@@ -1,0 +1,276 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPadmakoshSiteData } from '../lib/sanity';
+import ClickToLoadYouTube from '../components/ClickToLoadYouTube.astro';
+
+const { youtubeVideos } = await loadPadmakoshSiteData();
+const introVideo = youtubeVideos[0];
+
+const perfectionPillars = [
+  {
+    num: '01',
+    kicker: 'WORLDWIDE RECOGNITION',
+    title: 'Certification Exams Twice a Year',
+    desc: 'Structured academic progression affiliated with Gandharva Mahavidyalaya and Bharati Vidyapeeth, with formal certification examinations conducted twice every year.',
+  },
+  {
+    num: '02',
+    kicker: 'STAGE CONFIDENCE',
+    title: 'Annual Showcase Performances',
+    desc: 'Dedicated performing opportunities in our flagship annual shows, allowing dancers across every batch and age group to experience the joy of theatrical stage presentation.',
+  },
+  {
+    num: '03',
+    kicker: 'ARTISTIC INDIVIDUALITY',
+    title: 'Solo Presentation & Competitions',
+    desc: 'Every dancer dreams to be a solo performer. We introduce prestigious competitions, solo repertoire mentorship, and choreography productions throughout the learning journey.',
+  },
+  {
+    num: '04',
+    kicker: 'PROFESSIONAL STAGE',
+    title: 'Commercial & Cultural Shows',
+    desc: 'Regular performance opportunities in curated commercial and cultural productions after attaining technical mastery and stage maturity.',
+  },
+  {
+    num: '05',
+    kicker: 'PEDAGOGICAL LINEAGE',
+    title: 'Teacher’s Training & Experience',
+    desc: 'Guided teacher-training modules and hands-on classroom mentoring opportunities for senior disciples aspiring to pass on classical parampara.',
+  },
+  {
+    num: '06',
+    kicker: 'ARTS LEADERSHIP',
+    title: 'Studio Management Opportunities',
+    desc: 'Practical working opportunities in studio operations, rehearsal coordination, and arts management at Padmakosh Studio in Bavdhan, Pune.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Padmakosh School of Kathak | Lotus Mudra Philosophy, Affiliations & Studio"
+  description="Inspired by the Padmakosh hastamudra of a blooming lotus, Padmakosh School of Kathak in Bavdhan, Pune offers personalized Kathak training affiliated with Gandharva Mahavidyalaya and Bharati Vidyapeeth."
+  canonicalPath="/about/"
+>
+  <!-- Creative Animated Hero Stage -->
+  <section class="creative-hero-section">
+    <!-- Ambient Animated Light Orbs -->
+    <div class="creative-orb creative-orb-1" aria-hidden="true"></div>
+    <div class="creative-orb creative-orb-2" aria-hidden="true"></div>
+
+    <div class="container" style="position: relative; z-index: 5;">
+      <div class="grid-2" style="align-items: center; gap: clamp(2.5rem, 6vw, 5rem);">
+        <!-- Left: Content & Editorial Typography -->
+        <div>
+          <h1 style="font-size: var(--text-hero); line-height: 1.05; margin-bottom: 1.5rem; color: #1a1215;">
+            The Blooming Lotus of <br />
+            <span class="shimmer-gradient-text">Classical Kathak.</span>
+          </h1>
+
+          <p style="font-size: var(--text-lg); line-height: 1.75; color: #3d3135; font-family: var(--font-display); font-weight: 500; max-width: 50ch; margin-bottom: 1.25rem;">
+            <strong>Padmakosh</strong> — the name is inspired by a <em>hastamudra</em> (hand gesture) that shows a blooming lotus in Indian classical tradition. A lotus is the timeless symbol of <strong>aesthetics, wealth, wisdom, and enlightenment</strong>.
+          </p>
+
+          <p style="font-size: 0.96rem; line-height: 1.75; color: #5a4d51; max-width: 52ch; margin-bottom: 2rem;">
+            Guided by Kathak artist <strong>Sonal Pendse</strong> in Bavdhan, Pune, Padmakosh Studio is home to Padmakosh School of Kathak — affiliated with <strong>Gandharva Mahavidyalaya</strong> and <strong>Bharati Vidyapeeth</strong> for globally recognized certification examinations.
+          </p>
+
+          <div class="btn-group">
+            <a href="/classes/" class="btn btn--maroon">
+              EXPLORE PROGRAMS
+            </a>
+            <a href="/contact/" class="btn btn--ghost">
+              VISIT BAVDHAN STUDIO
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Creative Architectural Portal (Clean, Uncluttered, Pristine) -->
+        <div style="display: flex; justify-content: center;">
+          <div class="creative-stage-portal">
+            <!-- Pulsing Mandala Aura Ring -->
+            <div class="portal-mandala-ring" aria-hidden="true"></div>
+
+            <!-- Architectural Classical Arch Frame (Zero Clutter on Face or Mudras!) -->
+            <div class="portal-arch-frame">
+              <img
+                src="/images/curated/grand_stage_performance.jpg"
+                alt="Kathak performance ensemble on stage under theatrical lighting"
+                class="portal-arch-img"
+              />
+              <div class="portal-bottom-scrim"></div>
+              <div class="portal-bottom-caption">
+                <span class="caption-kicker">PADMAKOSH HASTAMUDRA</span>
+                <p class="caption-title">Aesthetics · Wealth · Wisdom · Enlightenment</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motto, Virtues & Hybrid Studio Infrastructure -->
+  <section class="section" style="border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 3.5rem;">
+        <span class="kicker kicker--dark">VISION &amp; ETHOS</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 0.75rem;">
+          Our Motto, Virtues &amp; Modern Learning
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">
+          Bridging time-honoured guru-shishya discipline with contemporary teaching infrastructure for learners of every age group.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Card 1: Our Motto -->
+        <div class="sleek-card" style="border-top: 3px solid var(--maroon-rich);">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon-rich); display: block; margin-bottom: 0.75rem;">
+              01 · OUR MOTTO
+            </span>
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">
+              Personalized Modules &amp; Certified Boards
+            </h3>
+            <p style="font-size: 0.92rem; line-height: 1.75; margin-bottom: 0;">
+              Padmakosh Studio is home to Padmakosh School of Kathak. We offer personalized modules of Kathak training for <strong>all age groups</strong> through <strong>weekday and weekend batches</strong> of certified examination boards having worldwide recognition.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Our Virtues -->
+        <div class="sleek-card" style="border-top: 3px solid var(--gold-warm);">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 0.75rem;">
+              02 · OUR VIRTUES
+            </span>
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">
+              Discipline, Technique &amp; Versatility
+            </h3>
+            <p style="font-size: 0.92rem; line-height: 1.75; margin-bottom: 0;">
+              <strong>Personal attention</strong>, <strong>disciplined teaching</strong>, and a <strong>versatile approach</strong> shape a dancer with strong technique and open the doors to immense artistic and professional possibilities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Online & Physical Classes -->
+        <div class="sleek-card" style="border-top: 3px solid var(--maroon-rich);">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon-rich); display: block; margin-bottom: 0.75rem;">
+              03 · PHYSICAL &amp; VIRTUAL CLASSES
+            </span>
+            <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">
+              Full-Wall Video Projection &amp; Wi-Fi
+            </h3>
+            <p style="font-size: 0.92rem; line-height: 1.75; margin-bottom: 0;">
+              Along with in-person physical classes at our Bavdhan studio, we conduct interactive <strong>virtual classes</strong> supported by an efficient high-speed Wi-Fi connection and <strong>full-wall video projection facilities</strong> for detailed footwork and mudra observation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlighted Associated Music Instructors Callout in Body Section -->
+      <div style="margin-top: 2.5rem; background: var(--bg-subtle); border: 1px solid rgba(212, 163, 89, 0.45); border-left: 4px solid var(--maroon-rich); padding: 1.25rem 1.5rem; border-radius: var(--radius-sm);">
+        <p style="margin: 0; font-size: 0.92rem; line-height: 1.7; color: var(--text-primary);">
+          <strong style="color: var(--maroon-rich); font-weight: 700;">Associated Music Instructors for Studio Events:</strong> Music-related events, classical baithaks, and accompaniment workshops hosted at Padmakosh Studio are conducted in association with music instructors <mark style="background: rgba(212, 163, 89, 0.25); color: var(--maroon-deep); font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 3px;">Shri. Anil Pendse</mark> and <mark style="background: rgba(212, 163, 89, 0.25); color: var(--maroon-deep); font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 3px;">Smt. Anjali Pendse</mark>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliated Examination Boards & Ongoing Quest for Perfection (6 Pillars) -->
+  <section class="section section--subtle">
+    <div class="container">
+      <!-- Affiliation Highlight Banner -->
+      <div style="background: linear-gradient(135deg, #4a0d16 0%, #2a070d 100%); color: #ffffff; padding: clamp(2rem, 4vw, 3.25rem); border-radius: var(--radius-md); border: 1px solid rgba(212, 163, 89, 0.4); margin-bottom: 4rem; box-shadow: 0 20px 45px -15px rgba(74, 13, 22, 0.35);">
+        <div class="grid-2" style="align-items: center; gap: 2.5rem;">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); display: block; margin-bottom: 0.65rem;">
+              ACCREDITED EXAMINATION AFFILIATIONS
+            </span>
+            <h2 style="font-size: clamp(1.75rem, 3vw, 2.4rem); color: #ffffff; margin-bottom: 0.85rem;">
+              Affiliated to Gandharva Mahavidyalaya &amp; Bharati Vidyapeeth
+            </h2>
+            <p style="color: rgba(255, 255, 255, 0.86); font-size: 0.95rem; line-height: 1.75; margin-bottom: 0;">
+              We are officially affiliated with <strong>Akhil Bharatiya Gandharva Mahavidyalaya Mandal</strong> and <strong>Bharati Vidyapeeth</strong> for recognized certification examinations in the field of Kathak — empowering students across Pune and worldwide with accredited credentials.
+            </p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 1.25rem;">
+            <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(212, 163, 89, 0.35); padding: 1.35rem; border-radius: var(--radius-sm);">
+              <span style="font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-warm); font-weight: 700; display: block; margin-bottom: 0.35rem;">BOARD 01</span>
+              <strong style="font-family: var(--font-display); font-size: 1.3rem; color: #ffffff; display: block; line-height: 1.2;">Gandharva Mahavidyalaya</strong>
+              <span style="font-size: 0.78rem; color: rgba(255,255,255,0.72); display: block; margin-top: 0.35rem;">Worldwide Recognized Classical Certification</span>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(212, 163, 89, 0.35); padding: 1.35rem; border-radius: var(--radius-sm);">
+              <span style="font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-warm); font-weight: 700; display: block; margin-bottom: 0.35rem;">BOARD 02</span>
+              <strong style="font-family: var(--font-display); font-size: 1.3rem; color: #ffffff; display: block; line-height: 1.2;">Bharati Vidyapeeth</strong>
+              <span style="font-size: 0.78rem; color: rgba(255,255,255,0.72); display: block; margin-top: 0.35rem;">University &amp; Board Kathak Examinations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Pillars of Perfection -->
+      <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 3rem;">
+        <span class="kicker kicker--dark">FROM STUDENT TO SOLO PERFORMER</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 0.85rem;">
+          Our Ongoing Quest for Perfection
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.75; margin-bottom: 0;">
+          Every dancer dreams to be a solo performer — so prestigious competitions, annual showcase performances, and choreography productions are introduced throughout the learning process. Our quest for perfection is made possible through six foundational pillars:
+        </p>
+      </div>
+
+      <div class="grid-3">
+        {perfectionPillars.map((pillar) => (
+          <div class="sleek-card" style="position: relative;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dark);">
+                  {pillar.kicker}
+                </span>
+                <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: rgba(109, 21, 34, 0.25);">
+                  {pillar.num}
+                </span>
+              </div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-primary);">
+                {pillar.title}
+              </h3>
+              <p style="font-size: 0.88rem; line-height: 1.7; margin-bottom: 0;">
+                {pillar.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Showcase with Authentic YouTube Thumbnail -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="align-items: center; gap: 3.5rem;">
+        <div>
+          <span class="kicker kicker--dark">STUDIO DOCUMENTARY</span>
+          <h2 style="font-size: var(--text-3xl); margin-bottom: 1rem;">
+            Inside Padmakosh Studio, Bavdhan
+          </h2>
+          <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem;">
+            A glimpse into the practice atmosphere, student riyaaz, and artistic direction under Guru Sonal Pendse in Bavdhan — serving nearby areas including Kothrud, Warje, Pashan, Aundh, and Baner.
+          </p>
+          <div class="btn-group">
+            <a href="/contact/" class="btn btn--maroon">
+              ENQUIRE ABOUT ADMISSIONS
+            </a>
+            <a href="/classes/" class="btn btn--ghost">
+              VIEW BATCHES &amp; SYLLABUS
+            </a>
+          </div>
+        </div>
+        <div>
+          {introVideo && <ClickToLoadYouTube video={introVideo} />}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

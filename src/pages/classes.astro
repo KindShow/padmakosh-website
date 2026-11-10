@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadPadmakoshSiteData } from '../lib/sanity';
+import ClickToLoadYouTube from '../components/ClickToLoadYouTube.astro';
+
+const { classProgrammes, youtubeVideos } = await loadPadmakoshSiteData();
+const beginnerVideo = youtubeVideos.find((v) => v.youtubeId === 'mPL7LvIHyhE');
+
+const programImages = [
+  { img: '/images/gallery/KAU_0258.jpg', pos: 'center 15%', label: 'Foundational Grammar & Alignment' },
+  { img: '/images/gallery/KAU_6116.jpg', pos: 'center 12%', label: 'Intermediate Repertoire & Riyaaz' },
+  { img: '/images/gallery/KAU_0159.jpg', pos: 'center 10%', label: 'Solo Mastery & Professional Pathways' },
+];
+
+const careerPathways = [
+  {
+    title: 'Certification Exams Twice a Year',
+    sub: 'GANDHARVA MAHAVIDYALAYA & BHARATI VIDYAPEETH',
+    desc: 'Structured syllabus preparation for globally recognized certification examinations held twice every year.',
+  },
+  {
+    title: 'Annual Showcase Performances',
+    sub: 'STAGE EXPERIENCE FOR EVERY STUDENT',
+    desc: 'Regular performing opportunities in our flagship annual shows to nurture theatrical poise and confidence.',
+  },
+  {
+    title: 'Solo Performer Preparation',
+    sub: 'COMPETITIONS & CHOREOGRAPHY PRODUCTIONS',
+    desc: 'Every dancer dreams to be a solo performer — we introduce prestigious competitions and solo presentations throughout the learning process.',
+  },
+  {
+    title: 'Commercial Show Opportunities',
+    sub: 'PROFESSIONAL STAGE REPERTOIRE',
+    desc: 'Regular performance opportunities in commercial and cultural shows after attaining technical mastery.',
+  },
+  {
+    title: 'Teacher’s Training & Mentorship',
+    sub: 'PEDAGOGICAL EXPERIENCE',
+    desc: 'Dedicated teacher-training modules and classroom mentoring opportunities for advanced disciples.',
+  },
+  {
+    title: 'Studio Management Opportunities',
+    sub: 'ARTS ADMINISTRATION & CURATION',
+    desc: 'Hands-on working opportunities in studio management, rehearsal operations, and production coordination.',
+  },
+];
+---
+
+<BaseLayout
+  title="Kathak Classes in Bavdhan, Kothrud, Aundh, Pashan & Baner | Padmakosh School of Kathak, Pune"
+  description="Enquire for classical Kathak classes in Bavdhan, Pune (serving Kothrud, Aundh, Pashan, Baner & Warje). Weekday, weekend & online batches for all age groups affiliated with Gandharva Mahavidyalaya & Bharati Vidyapeeth."
+  canonicalPath="/classes/"
+>
+  <!-- Page Header -->
+  <section class="section" style="padding-bottom: 2.5rem;">
+    <div class="container container--narrow">
+      <span class="kicker kicker--dark">ACADEMIC &amp; ARTISTIC TRAINING · ALL AGE GROUPS</span>
+      <h1 style="font-size: var(--text-hero); margin-bottom: 1.5rem; line-height: 1.05;">
+        Learning Programs
+      </h1>
+      <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--text-primary); font-family: var(--font-display); margin-bottom: 1.25rem;">
+        We offer personalized modules of Kathak training for <strong>all age groups</strong> through <strong>weekday and weekend batches</strong> of certified examination boards having worldwide recognition — affiliated with <strong>Gandharva Mahavidyalaya</strong> and <strong>Bharati Vidyapeeth</strong>.
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 0;">
+        Personal attention, disciplined teaching, and a versatile approach shape a dancer with strong technique and open the doors to immense possibilities — both in-person at our Bavdhan studio and via interactive virtual classes supported by high-speed Wi-Fi and full-wall video projection.
+      </p>
+    </div>
+  </section>
+
+  <!-- Accredited Affiliations & Batch Format Strip -->
+  <section style="padding-bottom: 3rem;">
+    <div class="container">
+      <div class="grid-3" style="gap: 1.5rem;">
+        <div class="sleek-card" style="padding: 1.75rem; border-left: 3px solid var(--maroon-rich);">
+          <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon-rich); display: block; margin-bottom: 0.4rem;">
+            CERTIFIED AFFILIATIONS
+          </span>
+          <h2 style="font-size: 1.3rem; margin-bottom: 0.4rem;">Gandharva Mahavidyalaya &amp; Bharati Vidyapeeth</h2>
+          <p style="font-size: 0.86rem; margin-bottom: 0;">Worldwide-recognized Kathak certification examinations conducted twice a year.</p>
+        </div>
+
+        <div class="sleek-card" style="padding: 1.75rem; border-left: 3px solid var(--gold-warm);">
+          <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 0.4rem;">
+            FLEXIBLE SCHEDULES
+          </span>
+          <h2 style="font-size: 1.3rem; margin-bottom: 0.4rem;">Weekday &amp; Weekend Batches</h2>
+          <p style="font-size: 0.86rem; margin-bottom: 0;">Personalized modules tailored for children, youth, and adults across all age groups.</p>
+        </div>
+
+        <div class="sleek-card" style="padding: 1.75rem; border-left: 3px solid var(--maroon-rich);">
+          <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--maroon-rich); display: block; margin-bottom: 0.4rem;">
+            PHYSICAL &amp; ONLINE LEARNING
+          </span>
+          <h2 style="font-size: 1.3rem; margin-bottom: 0.4rem;">In-Studio &amp; Full-Wall Projection</h2>
+          <p style="font-size: 0.86rem; margin-bottom: 0;">Bavdhan studio classes plus virtual batches powered by efficient Wi-Fi and full-wall video projection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Grid with Imagery -->
+  <section class="section section--subtle">
+    <div class="container">
+      <div class="grid-3">
+        {classProgrammes.map((prog, index) => (
+          <div class="sleek-card" id={prog.slug} style="padding: 0; overflow: hidden;">
+            <div style="position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #0f0a0c;">
+              <img
+                src={programImages[index]?.img || '/images/gallery/KAU_0072.jpg'}
+                alt={prog.title}
+                style={`width: 100%; height: 100%; object-fit: cover; object-position: ${programImages[index]?.pos || 'center 15%'}; display: block;`}
+              />
+              <span style="position: absolute; top: 1rem; left: 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; background: rgba(0,0,0,0.75); color: var(--gold-light); padding: 0.25rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.15);">
+                STAGE 0{index + 1}
+              </span>
+            </div>
+
+            <div style="padding: 2rem; display: flex; flex-direction: column; flex: 1; justify-content: space-between;">
+              <div>
+                <h2 style="font-size: var(--text-xl); margin-bottom: 0.75rem; line-height: 1.25;">
+                  {prog.title}
+                </h2>
+                <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.75rem;">
+                  {prog.summary.value}
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem; margin-bottom: 1.5rem;">
+                  <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 0.75rem;">
+                    CURRICULUM FOCUS
+                  </span>
+                  <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                    {prog.coreThemes.map((t) => (
+                      <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
+                        <span style="color: var(--maroon-rich);">—</span>
+                        <span>{t.value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
+                <a href="/contact/" class="btn btn--maroon" style="width: 100%; font-size: 0.72rem;">
+                  ENQUIRE FOR THIS PROGRAM
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Pillars: Our Ongoing Quest for Perfection -->
+  <section class="section" style="border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div style="text-align: center; max-width: 720px; margin-inline: auto; margin-bottom: 3.5rem;">
+        <span class="kicker kicker--dark">COMPLETE DANCER DEVELOPMENT</span>
+        <h2 style="font-size: var(--text-3xl); margin-bottom: 0.85rem;">
+          Our Ongoing Quest for Perfection
+        </h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 0;">
+          Every dancer dreams to be a solo performer — so prestigious competitions, annual showcase performances, and choreography productions are woven into our training. Our quest for perfection is built on six pillars:
+        </p>
+      </div>
+
+      <div class="grid-3">
+        {careerPathways.map((item) => (
+          <div class="sleek-card">
+            <div>
+              <span style="font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 0.5rem;">
+                {item.sub}
+              </span>
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.65rem; color: var(--text-primary);">
+                {item.title}
+              </h3>
+              <p style="font-size: 0.88rem; line-height: 1.7; margin-bottom: 0;">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Highlight -->
+  {beginnerVideo && (
+    <section class="section">
+      <div class="container">
+        <div class="grid-2" style="align-items: center; gap: 3.5rem;">
+          <div>
+            <span class="kicker kicker--dark">CLASSROOM RIYAAZ</span>
+            <h2 style="font-size: var(--text-3xl); margin-bottom: 1rem;">
+              Foundational Tritaal Practice
+            </h2>
+            <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.75rem;">
+              First-year Padmakosh students demonstrating tatkar, laya control, and spoken padhant in Tritaal. Our pedagogical approach ensures every student masters the foundational grammar of Kathak before embarking on advanced stage choreographies.
+            </p>
+            <a href="/contact/" class="btn btn--ghost">
+              JOIN A WEEKDAY OR WEEKEND BATCH
+            </a>
+          </div>
+          <div>
+            <ClickToLoadYouTube video={beginnerVideo} />
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

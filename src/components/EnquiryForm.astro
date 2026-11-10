@@ -1,0 +1,219 @@
+---
+import type { EnquiryCategory } from '../lib/enquiry';
+
+interface Props {
+  defaultCategory?: EnquiryCategory;
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  defaultCategory = 'kathak-classes',
+  heading = 'Direct Enquiry',
+  subheading = 'Whether enquiring about Kathak admissions or studio space in Bavdhan, share your details below.',
+} = Astro.props;
+---
+
+<div class="sleek-enquiry-box">
+  <div style="margin-bottom: 2rem;">
+    <span class="kicker kicker--dark">CONNECT</span>
+    <h2 style="font-size: var(--text-2xl); margin-bottom: 0.5rem;">{heading}</h2>
+    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0;">
+      {subheading}
+    </p>
+  </div>
+
+  <form id="padmakosh-enquiry-form" class="sleek-form" novalidate>
+    <!-- Honeypot -->
+    <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+      <input type="text" id="enquiry-website-url" name="websiteUrlHoneypot" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="grid-2" style="gap: 1.25rem;">
+      <div class="form-group">
+        <label for="enquiry-full-name">Full Name *</label>
+        <input
+          class="input-field"
+          type="text"
+          id="enquiry-full-name"
+          name="fullName"
+          required
+          minlength="2"
+          maxlength="120"
+          placeholder="Your full name"
+          autocomplete="name"
+        />
+        <div id="enquiry-full-name-error" class="error-msg" hidden></div>
+      </div>
+
+      <div class="form-group">
+        <label for="enquiry-category">Enquiry Type *</label>
+        <select class="select-field" id="enquiry-category" name="category" required>
+          <option value="kathak-classes" selected={defaultCategory === 'kathak-classes'}>
+            Kathak Learning Classes
+          </option>
+          <option value="studio-space" selected={defaultCategory === 'studio-space'}>
+            Padmakosh Studio Rental / Workshop Space
+          </option>
+          <option value="performance-collaboration" selected={defaultCategory === 'performance-collaboration'}>
+            Performance or Collaboration Invitation
+          </option>
+          <option value="general" selected={defaultCategory === 'general'}>
+            General Enquiry
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2" style="gap: 1.25rem;">
+      <div class="form-group">
+        <label for="enquiry-email">Email Address</label>
+        <input
+          class="input-field"
+          type="email"
+          id="enquiry-email"
+          name="email"
+          placeholder="name@example.com"
+          autocomplete="email"
+        />
+        <div id="enquiry-email-error" class="error-msg" hidden></div>
+      </div>
+
+      <div class="form-group">
+        <label for="enquiry-phone">Phone Number</label>
+        <input
+          class="input-field"
+          type="tel"
+          id="enquiry-phone"
+          name="phone"
+          placeholder="+91 98XXX XXXXX"
+          autocomplete="tel"
+        />
+        <div id="enquiry-phone-error" class="error-msg" hidden></div>
+      </div>
+    </div>
+    <div id="enquiry-channel-error" class="error-msg" hidden style="margin-bottom: 1rem;"></div>
+
+    <div class="form-group">
+      <label for="enquiry-message">Your Message *</label>
+      <textarea
+        class="textarea-field"
+        id="enquiry-message"
+        name="message"
+        rows="4"
+        required
+        minlength="15"
+        maxlength="2500"
+        placeholder="Share your background or question (e.g. prior training, preferred days, or nature of studio session)..."
+      ></textarea>
+      <div id="enquiry-message-error" class="error-msg" hidden></div>
+    </div>
+
+    <div style="margin-top: 1.75rem;">
+      <button type="submit" class="btn btn--maroon" id="enquiry-submit-btn" style="width: 100%;">
+        SUBMIT ENQUIRY
+      </button>
+    </div>
+
+    <div id="enquiry-status-banner" role="status" aria-live="polite" hidden style="margin-top: 1.25rem; font-size: 0.85rem; padding: 1rem; border-radius: var(--radius-sm);"></div>
+  </form>
+</div>
+
+<style>
+  .sleek-enquiry-box {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 35px -15px rgba(0, 0, 0, 0.05);
+  }
+
+  .error-msg {
+    color: #991b1b;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+  }
+</style>
+
+<script>
+  import { validateEnquiryPayload, type EnquiryCategory } from '../lib/enquiry';
+
+  function setupEnquiryForm() {
+    const form = document.getElementById('padmakosh-enquiry-form') as HTMLFormElement | null;
+    if (!form || form.dataset.bound === 'true') return;
+    form.dataset.bound = 'true';
+
+    const submitBtn = document.getElementById('enquiry-submit-btn') as HTMLButtonElement | null;
+    const statusBanner = document.getElementById('enquiry-status-banner') as HTMLElement | null;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!statusBanner || !submitBtn) return;
+
+      const errorIds = [
+        'enquiry-full-name-error',
+        'enquiry-channel-error',
+        'enquiry-email-error',
+        'enquiry-phone-error',
+        'enquiry-message-error',
+      ];
+      errorIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) { el.hidden = true; el.textContent = ''; }
+      });
+      statusBanner.hidden = true;
+
+      const formData = new FormData(form);
+      const payload = {
+        fullName: String(formData.get('fullName') || ''),
+        email: String(formData.get('email') || ''),
+        phone: String(formData.get('phone') || ''),
+        category: String(formData.get('category') || 'kathak-classes') as EnquiryCategory,
+        message: String(formData.get('message') || ''),
+        websiteUrlHoneypot: String(formData.get('websiteUrlHoneypot') || ''),
+      };
+
+      const val = validateEnquiryPayload(payload);
+      if (!val.valid) {
+        if (val.fieldErrors.fullName) {
+          const el = document.getElementById('enquiry-full-name-error');
+          if (el) { el.textContent = val.fieldErrors.fullName; el.hidden = false; }
+        }
+        if (val.fieldErrors.replyChannel) {
+          const el = document.getElementById('enquiry-channel-error');
+          if (el) { el.textContent = val.fieldErrors.replyChannel; el.hidden = false; }
+        }
+        if (val.fieldErrors.email) {
+          const el = document.getElementById('enquiry-email-error');
+          if (el) { el.textContent = val.fieldErrors.email; el.hidden = false; }
+        }
+        if (val.fieldErrors.phone) {
+          const el = document.getElementById('enquiry-phone-error');
+          if (el) { el.textContent = val.fieldErrors.phone; el.hidden = false; }
+        }
+        if (val.fieldErrors.message) {
+          const el = document.getElementById('enquiry-message-error');
+          if (el) { el.textContent = val.fieldErrors.message; el.hidden = false; }
+        }
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'TRANSMITTING ENQUIRY…';
+      await new Promise((r) => setTimeout(r, 400));
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'SUBMIT ENQUIRY';
+      statusBanner.hidden = false;
+      statusBanner.style.background = '#f4fbf6';
+      statusBanner.style.color = '#154d31';
+      statusBanner.style.border = '1px solid #9bd0b3';
+      statusBanner.innerHTML = `<strong>Thank you, ${val.sanitized?.fullName}.</strong> Your enquiry has been received. Our team will review batch availability and contact you shortly.`;
+      form.reset();
+    });
+  }
+
+  setupEnquiryForm();
+  document.addEventListener('astro:page-load', setupEnquiryForm);
+</script>
