@@ -1,5 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ClickToLoadYouTube from '../components/ClickToLoadYouTube.astro';
+import type { YouTubeVideoAsset } from '../types/content';
+
+const testimonialVideo: YouTubeVideoAsset = {
+  id: 'yt-amruta-studio-praise',
+  youtubeId: 't4W3TjxpATs',
+  url: 'https://youtube.com/shorts/t4W3TjxpATs',
+  title: 'A Soulful Praise for Our Soulful Space — Amruta Paranjape Gogate',
+  sourceTitleInChannel: 'A soulful praise for our soulful space !',
+  duration: '0:58',
+  publishedDate: '2024',
+  category: 'testimonial',
+  credits: ['Kathak Artist: Amruta Paranjape Gogate', 'Padmakosh Studio, Bavdhan, Pune'],
+  descriptionSummary:
+    'Accomplished Kathak artist and fellow colleague Amruta Paranjape Gogate praises the serene ambiance, wooden flooring, and riyaaz atmosphere of Padmakosh Studio in Bavdhan.',
+  embedVerified: true,
+  captionsVerified: false,
+  studentConsentPending: false,
+  tier: 'verified',
+  proposedPlacement: 'Padmakosh Studio Page Testimonial Section',
+};
 ---
 
 <BaseLayout
@@ -102,6 +123,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <p style="font-family: var(--font-display); font-size: 1.15rem; margin: 0; color: var(--text-primary);">
               Acoustic Space Designed for Mindful Riyaaz &amp; Artistry
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fellow Artist Testimonial Section -->
+  <section class="section" style="padding-top: 0; padding-bottom: 3.5rem;">
+    <div class="container">
+      <div
+        class="sleek-card"
+        style="padding: 2.5rem; border-left: 4px solid var(--gold-warm); background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(212,163,89,0.05) 100%);"
+      >
+        <div class="grid-2" style="align-items: center; gap: 3.5rem;">
+          <div>
+            <span class="kicker kicker--dark" style="margin-bottom: 0.75rem;">
+              FELLOW ARTIST TESTIMONIAL · PRAISE FOR PADMAKOSH STUDIO
+            </span>
+            <h2 style="font-size: var(--text-2xl); margin-bottom: 1rem; line-height: 1.2;">
+              A Soulful Space for Classical Artistry
+            </h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem;">
+              Accomplished Kathak artist and fellow colleague <strong>Amruta Paranjape Gogate</strong> shares her experience and admiration for Padmakosh Studio — celebrating its serene ambiance, dedicated wooden dance floor, and inspiring energy for riyaaz and creative exploration.
+            </p>
+            <div style="display: flex; align-items: center; gap: 1rem; border-top: 1px solid var(--border-light); padding-top: 1.25rem;">
+              <div
+                style="width: 46px; height: 46px; border-radius: 50%; background: var(--maroon-rich); color: #ffffff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; flex-shrink: 0;"
+              >
+                A
+              </div>
+              <div>
+                <strong style="display: block; font-size: 0.95rem; color: var(--text-primary);">Amruta Paranjape Gogate</strong>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Kathak Artist &amp; Colleague · Bavdhan Visit</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <ClickToLoadYouTube video={testimonialVideo} />
           </div>
         </div>
       </div>

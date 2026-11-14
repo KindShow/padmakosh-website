@@ -44,7 +44,7 @@ export interface YouTubeVideoAsset {
   sourceTitleInChannel: string;
   duration: string;
   publishedDate?: string;
-  category: 'introduction' | 'performance' | 'student-journey' | 'repertoire' | 'experimental';
+  category: 'introduction' | 'performance' | 'student-journey' | 'repertoire' | 'experimental' | 'testimonial';
   credits: string[];
   descriptionSummary: string;
   embedVerified: boolean;

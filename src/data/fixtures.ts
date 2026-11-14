@@ -717,6 +717,24 @@ export const YOUTUBE_VIDEO_INVENTORY: YouTubeVideoAsset[] = [
     tier: 'verified',
     proposedPlacement: 'Gallery — Experimental Storytelling',
   },
+  {
+    id: 'yt-amruta-studio-praise',
+    youtubeId: 't4W3TjxpATs',
+    url: 'https://youtube.com/shorts/t4W3TjxpATs',
+    title: 'A Soulful Praise for Our Soulful Space',
+    sourceTitleInChannel: 'A soulful praise for our soulful space !',
+    duration: '0:58',
+    publishedDate: '2024',
+    category: 'testimonial',
+    credits: ['Kathak Artist: Amruta Paranjape Gogate', 'Padmakosh Studio, Bavdhan, Pune'],
+    descriptionSummary:
+      'Accomplished Kathak artist and fellow colleague Amruta Paranjape Gogate praises the serene ambiance, wooden flooring, and riyaaz atmosphere of Padmakosh Studio in Bavdhan.',
+    embedVerified: true,
+    captionsVerified: false,
+    studentConsentPending: false,
+    tier: 'verified',
+    proposedPlacement: 'Padmakosh Studio Page Testimonial Section',
+  },
 ];
 
 export interface DrivePhotoInventoryEntry {
