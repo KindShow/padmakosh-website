@@ -273,7 +273,7 @@ export const CLASS_PROGRAMMES_FIXTURE: ClassProgramme[] = [
         sourceNote: 'Owner-confirmed batch structure for all age groups.',
       },
       {
-        value: 'Physical studio classes in Bavdhan + interactive virtual classes with full-wall video projection',
+        value: 'Physical studio classes in Bavdhan + interactive virtual classes for global students',
         tier: 'verified',
         sourceNote: 'Directly confirmed by owner.',
       },
@@ -290,7 +290,7 @@ export const CLASS_PROGRAMMES_FIXTURE: ClassProgramme[] = [
         sourceNote: 'Confirmed by owner.',
       },
       deliveryModes: {
-        value: 'In-studio Bavdhan classes and virtual classes backed by efficient Wi-Fi & full-wall video projection',
+        value: 'In-studio Bavdhan classes and interactive virtual classes backed by high-speed Wi-Fi',
         tier: 'verified',
         sourceNote: 'Confirmed by owner.',
       },
@@ -345,7 +345,7 @@ export const CLASS_PROGRAMMES_FIXTURE: ClassProgramme[] = [
         sourceNote: 'Confirmed by owner.',
       },
       deliveryModes: {
-        value: 'In-person studio training and virtual projection-supported sessions',
+        value: 'In-person studio training and interactive virtual sessions',
         tier: 'verified',
         sourceNote: 'Confirmed by owner.',
       },
@@ -425,7 +425,7 @@ export const STUDIO_OFFERING_FIXTURE: StudioOffering = {
     sourceNote: 'Owner motto and portfolio PDF.',
   },
   distinctPositioningNote:
-    'Padmakosh Studio is home to Padmakosh School of Kathak in Bavdhan, Pune — equipped with a 750 sq. ft. air-conditioned floor, efficient Wi-Fi connectivity, and full-wall video projection facilities for physical and virtual training, rehearsals, and creative gatherings.',
+    'Padmakosh Studio is home to Padmakosh School of Kathak in Bavdhan, Pune — equipped with a 750 sq. ft. air-conditioned floor, high-speed Wi-Fi connectivity, and video projection facilities for training, rehearsals, and creative gatherings.',
   statedAreaSqFt: {
     value: 'Approx. 750 sq. ft. studio floor',
     tier: 'owner-supplied',
@@ -433,7 +433,7 @@ export const STUDIO_OFFERING_FIXTURE: StudioOffering = {
   },
   statedAmenities: [
     {
-      value: 'Full-wall video projection facilities & high-speed Wi-Fi for seamless virtual and hybrid classes',
+      value: 'High-definition video projection facilities & high-speed Wi-Fi for seamless virtual and hybrid classes',
       tier: 'verified',
       sourceNote: 'Directly confirmed by owner.',
     },
